@@ -4,27 +4,13 @@ import {
     WhatsappShareButton
 } from "react-share";
 import {
-    EmailIcon,
+  
     FacebookIcon,
-    FacebookMessengerIcon,
-    HatenaIcon,
-    InstapaperIcon,
-    LineIcon,
-    LinkedinIcon,
-    LivejournalIcon,
-    MailruIcon,
-    OKIcon,
-    PinterestIcon,
-    PocketIcon,
-    RedditIcon,
-    TelegramIcon,
-    TumblrIcon,
+  
     TwitterIcon,
-    ViberIcon,
-    VKIcon,
-    WeiboIcon,
+  
     WhatsappIcon,
-    WorkplaceIcon
+  
   } from "react-share";
 
 export const Button = ({imageUrl,closeModal}) => {
@@ -33,7 +19,7 @@ export const Button = ({imageUrl,closeModal}) => {
           <div className="bg-white rounded-lg p-4 max-w-sm">
             <h2 className="text-xl font-bold mb-4">Share Image</h2>
             <div className="flex flex-col space-y-4">
-              <FacebookShareButton url={imageUrl} quote="Hello everyone">
+              <FacebookShareButton url={imageUrl} quote="Check out this random image!">
               <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
               <TwitterShareButton url={imageUrl}>
