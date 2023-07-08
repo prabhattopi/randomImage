@@ -11,7 +11,7 @@ function App() {
   }, []);
 
   const fetchRandomImage = () => {
-    fetch("https://picsum.photos/300/300")
+    fetch("https://picsum.photos/500/500")
       .then((response) => {
         console.log(response);
         setImageUrl(response.url);
@@ -45,8 +45,8 @@ function App() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
-      <Helmet>
+      <>
+       <Helmet>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:type" content="website" />
@@ -55,14 +55,16 @@ function App() {
           property="og:description"
           content="Check out this random image!"
         />
-        {imageUrl && (
-          <>
+      
+       
             <meta property="og:image" content={imageUrl} />
             <meta name="twitter:card" content="summary_large_image" />
-          </>
-        )}
-        <meta property="og:url" content={window.location.href} />
+        
+       
+        {/* <meta property="og:url" content={window.location.origin+imageUrl} /> */}
       </Helmet>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
+     
       <div className="bg-white rounded-lg shadow-md p-4 max-w-sm w-full sm:max-w-md sm:w-auto">
         <h1 className="text-2xl font-bold mb-4">Random Image Display</h1>
         <img src={imageUrl} alt="Random" className="mb-4" />
@@ -74,9 +76,10 @@ function App() {
         </button>
       </div>
       {showModal && (
-        <Button imageUrl={imageUrl} closeModal={closeModal} />
+        <Button imageUrl={window.location.origin} closeModal={closeModal} />
       )}
     </div>
+    </>
   );
 }
 
