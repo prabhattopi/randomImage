@@ -2,19 +2,26 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FiShare2 } from "react-icons/fi";
 import {Button} from "./component/Button.jsx"
+const newDimensions = "300/300";
 function App() {
   const [imageUrl, setImageUrl] = useState("");
   const [showModal, setShowModal] = useState(false);
-
+  const [modifiedImageUrl,setModifiedImageUrl]=useState("")
   useEffect(() => {
     fetchRandomImage();
   }, []);
 
   const fetchRandomImage = () => {
-    fetch("https://picsum.photos/500/500")
+    fetch("https://picsum.photos/500/300")
       .then((response) => {
         console.log(response);
+
         setImageUrl(response.url);
+        const newUrl=response.url.replace()
+
+        console.log(newUrl)
+        setModifiedImageUrl(newUrl)
+        console.log(response.url)
       })
       .catch((error) => {
         console.error("Error fetching random image:", error);
@@ -43,14 +50,15 @@ function App() {
   const closeModal = () => {
     setShowModal(false);
   };
-
+if(imageUrl)
   return (
       <>
        <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Random Image Display" />
+       <meta property="og:title" content="Random Images" />
+
+   
+     
+ 
         <meta
           property="og:description"
           content="Check out this random image!"
@@ -58,10 +66,12 @@ function App() {
       
        
             <meta property="og:image" content={imageUrl} />
+            <meta property="og:image:type" content="image/jpeg" />
             <meta name="twitter:card" content="summary_large_image" />
         
        
-        {/* <meta property="og:url" content={window.location.origin+imageUrl} /> */}
+            <meta property="og:image:width" content="400" />
+            <meta property="og:image:height" content="300" />
       </Helmet>
     <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
      
@@ -76,7 +86,7 @@ function App() {
         </button>
       </div>
       {showModal && (
-        <Button imageUrl={window.location.origin} closeModal={closeModal} />
+        <Button imageUrl={window.location.href} closeModal={closeModal} />
       )}
     </div>
     </>
